@@ -58,7 +58,11 @@ namespace Gosu
 
             int dpi_x = 100, dpi_y = 100;
 
-            context = pango_ft2_get_context(dpi_x, dpi_y);
+	    // pango_ft2_get_context has been deprecated since version 1.22
+            // context = pango_ft2_get_context(dpi_x, dpi_y);
+	    
+	    // using pango_font_map_create_context() instead.
+	    context = pango_font_map_create_context(dpi_x,dpi_y);
 
             pango_context_set_language(context, pango_language_from_string ("en_US"));
             PangoDirection init_dir = PANGO_DIRECTION_LTR;
